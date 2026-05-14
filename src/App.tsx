@@ -15,23 +15,21 @@ function App() {
     dismissModal,
   } = useBingoGame();
 
-  if (gameState === 'start') {
-    return <StartScreen onStart={startGame} />;
-  }
-
   return (
-    <>
-      <GameScreen
-        board={board}
-        winningSquareIds={winningSquareIds}
-        hasBingo={gameState === 'bingo'}
-        onSquareClick={handleSquareClick}
-        onReset={resetGame}
-      />
-      {showBingoModal && (
-        <BingoModal onDismiss={dismissModal} />
+    <div className="min-h-screen px-4 py-6 text-slate-100">
+      {gameState === 'start' ? (
+        <StartScreen onStart={startGame} />
+      ) : (
+        <GameScreen
+          board={board}
+          winningSquareIds={winningSquareIds}
+          hasBingo={gameState === 'bingo'}
+          onSquareClick={handleSquareClick}
+          onReset={resetGame}
+        />
       )}
-    </>
+      {showBingoModal && <BingoModal onDismiss={dismissModal} />}
+    </div>
   );
 }
 

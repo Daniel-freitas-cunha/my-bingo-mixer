@@ -1,21 +1,73 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
+  --color-bg: #05060f;
+  --color-surface: rgba(7, 12, 27, 0.90);
+  --color-card: rgba(12, 18, 40, 0.92);
+  --color-panel: rgba(13, 23, 59, 0.95);
+  --color-fg: #e8f3ff;
+  --color-fg-soft: #a5b4fc;
+  --color-accent: #7c3aed;
+  --color-accent-bright: #22d3ee;
+  --color-cta: #ec4899;
+  --color-border: rgba(129, 140, 248, 0.35);
+  --color-marked: rgba(34, 211, 238, 0.16);
+  --color-marked-border: rgba(45, 212, 191, 0.45);
+  --color-bonus: #a855f7;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
   -webkit-tap-highlight-color: transparent;
+  background-image:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.16), transparent 26%),
+    radial-gradient(circle at center, rgba(34, 211, 238, 0.08), transparent 18%);
+  background-blend-mode: screen;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.08), transparent 16%),
+      radial-gradient(circle at 80% 10%, rgba(236, 72, 153, 0.08), transparent 15%);
+  }
+}
+
+@layer utilities {
+  .neon-panel {
+    background: rgba(8, 11, 29, 0.86);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.12);
+  }
+
+  .neon-border {
+    border: 1px solid rgba(124, 58, 237, 0.46);
+    box-shadow: 0 0 32px rgba(124, 58, 237, 0.28);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.25), 0 0 40px rgba(124, 58, 237, 0.18);
+  }
 }
